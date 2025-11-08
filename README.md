@@ -1,1 +1,1 @@
-A very simple Cookie clicker clone with a twist made in Python using Tkinter library.
+A very simple Cookie Clicker inspired game made with Python using Tkinter library.
