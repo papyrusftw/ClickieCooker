@@ -40,11 +40,9 @@ class Main:
         self.window.after(30, lambda: self.Shake(offsets, index + 1))
 
     def ColorChange(self):
-            if 0<self.scoreValue<=100:
-                self.scoreText.config(fg="green")
-            elif 100<self.scoreValue<=200:
-                self.scoreText.config(fg="blue")
-            elif 200<self.scoreValue<=500:
-                self.scoreText.config(fg="gray")
-            else: self.scoreText.config(fg="red")
+        ColorStages = [(100, "green"), (200, "blue"), (300, "gray"), (float("inf"), "red")]
+        for limit, color in ColorStages:
+            if self.scoreValue <= limit:
+                self.scoreText.config(fg=color)
+                break
 Main()
