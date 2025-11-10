@@ -26,15 +26,25 @@ class Main:
         self.scoreValue += 1
         self.scoreText.config(text=f"Your score: {self.scoreValue}")
         self.AnimationLoop()
+        self.ColorChange()
 
     def AnimationLoop(self):
         offsets = [10, -10, 6, -6, 3, -3, 0]
-        self.ShakeStep(offsets, 0)
+        self.Shake(offsets, 0)
 
-    def ShakeStep(self, offsets, index):
+    def Shake(self, offsets, index):
         if index >= len(offsets):
             return
         dx = offsets[index]
         self.imageLabel.place(x=self.origin_x + dx, y=self.origin_y)
-        self.window.after(30, lambda: self.ShakeStep(offsets, index + 1))
+        self.window.after(30, lambda: self.Shake(offsets, index + 1))
+
+    def ColorChange(self):
+            if 0<self.scoreValue<=100:
+                self.scoreText.config(fg="green")
+            elif 100<self.scoreValue<=200:
+                self.scoreText.config(fg="blue")
+            elif 200<self.scoreValue<=500:
+                self.scoreText.config(fg="gray")
+            else: self.scoreText.config(fg="red")
 Main()
