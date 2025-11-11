@@ -1,4 +1,5 @@
 import tkinter as tk
+import random
 class Main:
     def __init__(self):
         self.window = tk.Tk()
@@ -38,9 +39,12 @@ class Main:
         dx = offsets[index]
         self.imageLabel.place(x=self.origin_x + dx, y=self.origin_y)
         self.window.after(30, lambda: self.Shake(offsets, index + 1))
+    def RandomColor(self):
+        HexColor = f"#{random.randint(0, 0xFFFFFF):06x}"
+        return HexColor
 
     def ColorChange(self):
-        ColorStages = [(100, "green"), (200, "blue"), (300, "gray"), (float("inf"), "red")]
+        ColorStages = [(100, "green"), (200, "blue"), (300, "gray"), (400, "pink"), (500, "red"), (float("inf"), self.RandomColor())]
         for limit, color in ColorStages:
             if self.scoreValue <= limit:
                 self.scoreText.config(fg=color)
